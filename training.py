@@ -4,7 +4,6 @@ import numpy as np
 from tqdm import tqdm
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from models.conv2seq import Decoder as Conv2Seq
 from models.con2seq_v2 import Decoder as Conv2SeqV2
 import matplotlib.pyplot as plt
 import pickle as pkl
@@ -229,7 +228,7 @@ class CalculateMSE():
             val_loader = DataLoader(val_set, shuffle=True, drop_last=True, **loader_args)
             model_save = 'model_save/conv2seq_data_2_scheduler_long_{}.pt'.format(ind_cur)
             val_loss_min = 100000
-            # mdl_cur = Conv2Seq(device, params)
+            
             mdl_cur = Conv2SeqV2(device, params)
             mdl_cur.to(device)
             tloss = []
